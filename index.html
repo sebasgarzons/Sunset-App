@@ -1,0 +1,673 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="utf-8" />
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <title>api</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	    <link rel="stylesheet" type="text/css" media="screen" href="css/custom_1.css" />
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	    <!--<script src="js/jspdf.debug.js"></script>-->
+
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+
+
+
+
+
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<!--<script type="text/javascript" src="js/html2canvas.min.js"></script>-->
+		<script type="text/javascript" src="js/custom.js?v=2"></script>
+	</head>
+
+	<body>
+
+		<div class="com_red" style="position:absolute; right: 0px; top: 0px; padding: 8px 8px; background-color: #ffffff; position: fixed;">
+    		<a href="/App/.html" style="margin: 12px;
+    color: #000000;">Commercial</a><a href="/App/index_2_0.html" style="margin: 12px;
+    color: #000000;">Residential</a>
+    	</div>
+
+<style type="text/css">
+	body {
+    font-family: "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+}
+
+.dataset {
+    float: left;
+    vertical-align: top;
+
+
+}
+
+.widget {
+    display: inline-block;
+    background-color: white;
+    font-size: 14px !important;
+    line-height: 20px !important;
+
+    margin: 5px;
+    vertical-align: top;
+    color: #333;
+
+    border-radius: 5px;
+    margin: 10px;
+    padding-bottom: 20px;
+    border: 1px solid lightgray;
+
+
+    border-radius:5px;
+    -webkit-border-radius: 5px;
+
+
+    display: inline-block;
+    page-break-after: always;
+
+}
+
+.widget .header p {
+   padding: 10px;
+   border-bottom: 1px solid lightgrey;
+   max-width: 360px;
+}
+
+.widget .header .title {
+    font-weight: bold;
+    vertical-align: middle;
+    min-height: 36px;
+    padding: 5px 10px 5px 10px;
+
+}
+
+.widget .header:hover {
+    background-color: #f4f4f4;
+}
+
+.widget .header  .title.selected {
+    border-color: cornflowerblue;
+    background-color: #EEF;
+
+}
+
+.widget .content {
+    padding: 5px;
+    overflow-y: auto;
+    max-height: 400px;
+}
+
+.autolayout {
+    display: inline-block;
+}
+
+.element {
+    width: 360px;
+}
+
+.compact .content {
+    display: table;
+    width: 100%;
+}
+
+.compact .row {
+    display: table-row;
+    width: 100%;
+}
+
+.compact .cell {
+    display: table-cell;
+}
+
+.compact .row.selected {
+    background-color: #eee;
+}
+
+
+
+.toolbar {
+    display: block;
+    vertical-align: top;
+    margin: 10px;
+}
+
+.toolbar .basis {
+    min-width: 100px;
+}
+
+.btn {
+    /*min-width: 60px;*/
+}
+
+
+.cell.value {
+    overflow: hidden;
+    text-wrap: none;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.cell.freq {
+    width: 60px;
+}
+
+.cell.glyph {
+    vertical-align: middle;
+    width: 100px;
+}
+
+
+.element {
+
+}
+.element table {
+    table-layout: fixed;
+    width: 100%;
+}
+
+.element td {
+    padding: 0px;
+
+}
+
+.element .selectable:hover {
+    background-color: #f4f4f4;
+}
+
+
+.element .stat {
+    text-align: right;
+    padding-right: 20px;
+    font-weigth: bold;
+    color: darkgray;
+}
+
+
+
+.element .bar {
+    height: 18px;
+    display: inline-block;
+    float: left;
+}
+.bar-both {
+    background-color: #0a67a3 !important;
+
+}
+
+.bar-fg {
+    background-color: #3e97d1 !important;
+}
+
+.bar-bg {
+    background-color: #ddd !important;
+}
+
+.selected .bar-fg {
+    background-color: #FC0;
+}
+
+.selected .bar-both  {
+    background-color:#FA0;
+}
+
+tr.selected {
+    background-color: #eee;
+}
+
+.crosstab .selectable:hover {
+    background-color: #f4f4f4;
+}
+
+.crosstab tr.selected {
+    background-color: #eee;
+}
+
+.crosstab .header p {
+    max-width: 600px;
+}
+
+
+.crosstab td {
+  padding: 0 5px 0 5px;
+  text-align: right;
+}
+
+.crosstab td.value {
+  min-width: 60px;
+  max-width: 240px;
+  text-align: left;
+}
+
+.crosstab .cell {
+    vertical-align: top;
+}
+
+
+
+.crosstab th.cell {
+    max-width: 120px;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    text-align: right;
+    padding-right: 10px;
+    vertical-align: bottom;
+}
+
+.crosstab .n {
+    color: darkgray;
+}
+.fieldlist {
+}
+
+.constraints {
+    min-width:300px;
+    padding: 10px;
+
+    border-radius:5px;
+    -webkit-border-radius: 5px;
+
+
+}
+.constraints table {
+    width: 100%;
+
+}
+
+.sidenote {
+  max-width:300px;
+  padding: 0 10px 0px 10px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.headnote {
+    max-width: 600px;
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+}
+
+.info-block {
+    /*border: 1px solid lightgrey;*/
+    background-color: #eee;
+    vertical-align: top;
+    margin: 10px;
+    padding: 10px;
+    display: block;
+
+    /*box-shadow: 0 0 0 0px #9bc0cf, 0 0 0 3px #e0ebf0;*/
+}
+
+.menu-item {
+}
+
+.menu-item-value {
+    text-align: right;
+    float: right;
+}
+
+.gradient-blue {
+    background: #b8e1fc; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I4ZTFmYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwJSIgc3RvcC1jb2xvcj0iI2E5ZDJmMyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjI1JSIgc3RvcC1jb2xvcj0iIzkwYmFlNCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjM3JSIgc3RvcC1jb2xvcj0iIzkwYmNlYSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUwJSIgc3RvcC1jb2xvcj0iIzkwYmZmMCIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjUxJSIgc3RvcC1jb2xvcj0iIzZiYThlNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjgzJSIgc3RvcC1jb2xvcj0iI2EyZGFmNSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNiZGYzZmQiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #b8e1fc 0%, #a9d2f3 10%, #90bae4 25%, #90bcea 37%, #90bff0 50%, #6ba8e5 51%, #a2daf5 83%, #bdf3fd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #b8e1fc), color-stop(10%, #a9d2f3), color-stop(25%, #90bae4), color-stop(37%, #90bcea), color-stop(50%, #90bff0), color-stop(51%, #6ba8e5), color-stop(83%, #a2daf5), color-stop(100%, #bdf3fd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #b8e1fc 0%, #a9d2f3 10%, #90bae4 25%, #90bcea 37%, #90bff0 50%, #6ba8e5 51%, #a2daf5 83%, #bdf3fd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #b8e1fc 0%, #a9d2f3 10%, #90bae4 25%, #90bcea 37%, #90bff0 50%, #6ba8e5 51%, #a2daf5 83%, #bdf3fd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #b8e1fc 0%, #a9d2f3 10%, #90bae4 25%, #90bcea 37%, #90bff0 50%, #6ba8e5 51%, #a2daf5 83%, #bdf3fd 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #b8e1fc 0%, #a9d2f3 10%, #90bae4 25%, #90bcea 37%, #90bff0 50%, #6ba8e5 51%, #a2daf5 83%, #bdf3fd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e1fc', endColorstr='#bdf3fd', GradientType=0); /* IE6-8 */
+}
+</style>
+<div id="img-out"></div>
+
+
+		<img src="img/logo.png" class="logo_sty">
+
+		<div class="cont-form">
+
+
+
+
+
+			<form id="form_register" method="POST">
+
+				<h2 class="titpl-mvng" >Commercial Moving Worksheet</h2>
+
+				<div class="short-grp2">
+
+					<input data-date-format="MMMM DD YYYY" placeholder="Current Date" id="reg_walthr_date" class="datepicker">
+
+					<input placeholder="Moving Date Estimated" id="reg_mov_date" class="datepicker">
+
+				</div>
+
+				<h3 class="tt-crttn">Current Address</h3>
+
+				<div class="lng-grp2">
+
+					<input type="text" placeholder="Customer Name" id="reg_cstm_name"/>
+
+					<input type="text" placeholder="Contact" id="reg_cntct"/>
+
+				</div>
+
+				<div class="lng-grp3">
+
+					<input type="text" placeholder="Phone" id="reg_phn"/>
+
+					<input type="text" placeholder="Alternative Phone" id="reg_fx"/>
+
+					<input type="email" placeholder="Email" id="reg_ml"/>
+
+				</div>
+
+				<div class="lng-grp4">
+
+					<input type="text" placeholder="Current Address" id="reg_old_adrss" class="adress">
+
+					<input type="text" placeholder="Current ST" id="reg_old_st"/>
+
+					<input type="text" placeholder="Current Zipcode" id="reg_old_zpcd"/>
+
+				</div>
+
+				<div class="lng-grp4">
+					<input type="text" placeholder="New Address" id="reg_nw_adrss" class="adress">
+					<input type="text" placeholder="New ST" id="reg_nw_st"/>
+					<input type="text" placeholder="New Zipcode" id="reg_nwz_pcd"/>
+				</div>
+				<div class="endml-inpt lng-grp2">
+					<input type="text" placeholder="Current City" id="reg_old_ct"/>
+					<input type="text" placeholder="New City" id="reg_nw_ct"/>
+					<input type="text" placeholder="Register Number" id="reg_id"/>
+				</div>
+				<div class="cont-tbl" id="outfit">
+					<div class="cntrwtb-10">
+						<div class="contpbrtits">
+						<h2 class="tttop-tbl">Items 
+							<a class="btnadditm">+ Add Item</a>
+						</h2>
+						<h2 class="titclmntotl">Total</h2>
+						</div>
+						<div class="lstitmpl lstitmplcont1" totalLabel="1">
+							<h2><b>Boxes</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+						</div>
+
+						<div class="lstitmpl lstitmplcont2" totalLabel="2">
+
+							<h2><b>WorkStations</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont3" totalLabel="3">
+
+							<h2><b>Chairs</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont5" totalLabel="5">
+
+							<h2><b>Desks</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont6" totalLabel="6">
+
+							<h2><b>Electronics</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont7" totalLabel="7">
+
+							<h2><b>Files</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont8" totalLabel="8">
+
+							<h2><b>Bookcases</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>	
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont9" totalLabel="9">
+
+							<h2><b>Credenza</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont10" totalLabel="10">
+
+							<h2><b>Hutch</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont11" totalLabel="11">
+
+							<h2><b>Markerboards</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont12" totalLabel="12">
+
+							<h2><b>Tables</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont13" totalLabel="13">
+
+							<h2><b>Reception</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont14" totalLabel="14">
+
+							<h2><b>Kitchen</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont15" totalLabel="15">
+
+							<h2><b>Racks</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+
+						<div class="lstitmpl lstitmplcont16" totalLabel="16">
+
+							<h2><b>Miscellaneous</b> <a class="addstptj_sub btnaddsubctgr"><span>+</span> Add Subcategory</a></h2>
+
+						</div>
+            <label for="intglbttl"><span style="color:#fff">0</span></label>
+						<input name="intglbttl" id="intglbttl" class="totalTotal" type="number" value="0">
+
+					</div>
+
+				</div>
+				<input id="snapUrl" type="hidden" name="snapUrl">
+        		<button type="button" id="snap">Guardar Cambios</button>
+
+			</form>
+
+		</div>
+
+		<div class="additm1 additmsty">
+
+			<h2>+ Add a Item</h2>
+
+			<form>
+
+				<input type="text" id="cmpcatg" placeholder="Item name" />
+
+				<input type="submit" value="Add">
+
+			</form>
+
+			<div class="clsppop clsppopaddsty clsppopadd1">x</div>
+
+		</div>
+
+		<div class="additm2 additmsty">
+
+			<h2>+ Add a Subcategory</h2>
+
+			<form>
+
+				<input type="text" id="cmpsbcatg1" placeholder="Name subcategory" />
+
+				<input type="text" id="value2" placeholder="Category Cost" />
+
+				<input type="submit" value="Add">
+
+			</form>
+
+			<div class="clsppop clsppopaddsty clsppopadd2">x</div>
+
+		</div>
+	    <script>
+
+	        $(document).ready(function(){
+	            $("#form_register").submit(function(e){
+
+	            e.preventDefault();
+
+
+          var walthr_date = $("#reg_walthr_date").val();
+
+					var mov_date = $("#reg_mov_date").val();
+
+					var cstm_name = $("#reg_cstm_name").val();
+
+					var cntct = $("#reg_cntct").val();
+
+					var phn = $("#reg_phn").val();
+
+					var fx = $("#reg_fx").val();
+
+					var ml = $("#reg_ml").val();
+
+					var old_adrss = $("#reg_old_adrss").val();
+
+					var old_ct = $("#reg_old_ct").val();
+
+					var old_st = $("#reg_old_st").val();
+
+					var old_zpcd = $("#reg_old_zpcd").val();
+
+					var nw_adrss = $("#reg_nw_adrss").val();
+
+					var nw_ct = $("#reg_nw_ct").val();
+
+					var nw_st = $("#reg_nw_st").val();
+
+					var nwz_pcd = $("#reg_nwz_pcd").val();
+
+					var ml_ls = $("#reg_ml").val();
+
+					var id = $("#reg_id").val();
+					var snapUrl = $("#snapUrl").val();
+
+
+
+					var inf_item = $( ".lstitmpl h2 b" ).each(function( index ) {
+
+	  									console.log( index + ": " + $( this ).text() );
+
+									});
+
+
+
+					console.log("Test"+$(inf_item));
+
+
+
+
+
+	                $.ajax({
+
+	                    data: {walthr_datephp:walthr_date, mov_datephp:mov_date, cstm_namephp:cstm_name, cntctphp:cntct, phnphp:phn, fxphp:fx, mlphp:ml, old_adrssphp:old_adrss, old_ctphp:old_ct, old_stphp:old_st, old_zpcdphp:old_zpcd, nw_adrssphp:nw_adrss, nw_ctphp:nw_ct, nw_stphp:nw_st, nwz_pcdphp:nwz_pcd, ml_lsphp:ml_ls, idphp:id,snapUrl:snapUrl},
+
+	                    url: 'php/db_conn.php',
+
+	                    type: "post",
+
+	                    success: function(response){
+
+	                        alert(response);
+
+	                        $("#reg_walthr_date").val("");
+
+	                        $("#reg_mov_date").val("");
+
+	                        $("#reg_cstm_name").val("");
+
+	                        $("#reg_cntct").val("");
+
+	                        $("#reg_phn").val("");
+
+	                        $("#reg_fx").val("");
+
+	                        $("#reg_ml").val("");
+
+	                        $("#reg_old_adrss").val("");
+
+	                        $("#reg_old_ct").val("");
+
+	                        $("#reg_old_st").val("");
+
+	                        $("#reg_old_zpcd").val("");
+
+	                        $("#reg_nw_adrss").val("");
+
+	                        $("#reg_nw_ct").val("");
+
+	                        $("#reg_nw_st").val("");
+
+	                        $("#reg_nwz_pcd").val("");
+
+	                        $("#reg_ml_ls").val("");
+
+	                        $("#reg_id").val("");
+
+	                        $(".respuesta").html("Registro Éxitoso");
+
+	                        /*location.reload();*/
+
+
+
+
+
+
+
+	                    }
+
+	                });
+
+	            });
+
+	        });
+
+	    </script>
+
+
+
+
+
+	</body>
+
+</html>

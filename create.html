@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>api</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/custom_1.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/custom.js"></script>
+</head>
+<body>
+
+
+
+	<img src="img/logo.png" class="logo_sty">
+	<div class="cont-form">
+		<form id="form_register" method="POST">
+			<h2 class="titpl-mvng" >Moving Worksheet</h2>
+			<div class="short-grp2">
+				<input data-date-format="MMMM DD YYYY" placeholder="Current Date" id="reg_walthr_date" class="datepicker">
+				<input placeholder="Moving Date Estimated" id="reg_mov_date" class="datepicker">
+			</div>
+			<h3 class="tt-crttn">Current Address</h3>
+			<div class="lng-grp2">
+				<input type="text" placeholder="Customer Name" id="reg_cstm_name"/>
+				<input type="text" placeholder="Contact" id="reg_cntct"/>
+			</div>
+			<div class="lng-grp3">
+				<input type="text" placeholder="Phone" id="reg_phn"/>
+				<input type="text" placeholder="Alternative Phone" id="reg_fx"/>
+				<input type="email" placeholder="Email" id="reg_ml"/>
+			</div>
+			<div class="lng-grp4">
+				<input type="text" placeholder="Current Address" id="reg_old_adrss" class="adress">
+				<input type="text" placeholder="Current ST" id="reg_old_st"/>
+				<input type="text" placeholder="Current Zipcode" id="reg_old_zpcd"/>
+			</div>
+			<div class="lng-grp4">
+				<input type="text" placeholder="New Address" id="reg_nw_adrss" class="adress">
+				<input type="text" placeholder="New ST" id="reg_nw_st"/>
+				<input type="text" placeholder="New Zipcode" id="reg_nwz_pcd"/>
+			</div>
+			<div class="endml-inpt lng-grp2">
+				<input type="text" placeholder="Current City" id="reg_old_ct"/>
+				<input type="text" placeholder="New City" id="reg_nw_ct"/>
+				<input type="text" placeholder="Register Number" id="reg_id"/>
+			</div>
+			<div class="cont-tbl">
+				<div class="cntrwtb-10">
+					<div class="contpbrtits">
+					<h2 class="tttop-tbl">Items 
+						<a class="btnadditm">+ Add Item</a>
+					</h2>
+					<h2 class="titclmntotl">Total</h2>
+					</div>
+					<input class="totalTotal" type="number" value="0" readonly>
+				</div>
+			</div>
+			<button type="submit">Guardar Cambios</button>
+		</form>
+	</div>
+	<div class="additm1 additmsty">
+		<h2>+ Add a Item</h2>
+		<form>
+			<input type="text" id="cmpcatg" placeholder="Item name" />
+			<input type="submit" value="Add">
+		</form>
+		<div class="clsppop clsppopaddsty clsppopadd1">x</div>
+	</div>
+	<div class="additm2 additmsty">
+		<h2>+ Add a Subcategory</h2>
+		<form>
+			<input type="text" id="cmpsbcatg1" placeholder="Name subcategory" />
+			<input type="text" id="value2" placeholder="Category Cost" />
+			<input type="submit" value="Add">
+		</form>
+		<div class="clsppop clsppopaddsty clsppopadd2">x</div>
+	</div>
+
+    <script>
+        $(document).ready(function(){
+            $("#form_register").submit(function(e){
+            e.preventDefault();
+
+                var walthr_date = $("#reg_walthr_date").val();
+				var mov_date = $("#reg_mov_date").val();
+				var cstm_name = $("#reg_cstm_name").val();
+				var cntct = $("#reg_cntct").val();
+				var phn = $("#reg_phn").val();
+				var fx = $("#reg_fx").val();
+				var ml = $("#reg_ml").val();
+				var old_adrss = $("#reg_old_adrss").val();
+				var old_ct = $("#reg_old_ct").val();
+				var old_st = $("#reg_old_st").val();
+				var old_zpcd = $("#reg_old_zpcd").val();
+				var nw_adrss = $("#reg_nw_adrss").val();
+				var nw_ct = $("#reg_nw_ct").val();
+				var nw_st = $("#reg_nw_st").val();
+				var nwz_pcd = $("#reg_nwz_pcd").val();
+				var ml_ls = $("#reg_ml_ls").val();
+				var id = $("#reg_id").val();
+
+				var inf_item = $( ".lstitmpl h2 b" ).each(function( index ) {
+  									console.log( index + ": " + $( this ).text() );
+								});
+
+				console.log("Test"+$(inf_item));
+
+
+                $.ajax({
+                    data: {walthr_datephp:walthr_date, mov_datephp:mov_date, cstm_namephp:cstm_name, cntctphp:cntct, phnphp:phn, fxphp:fx, mlphp:ml, old_adrssphp:old_adrss, old_ctphp:old_ct, old_stphp:old_st, old_zpcdphp:old_zpcd, nw_adrssphp:nw_adrss, nw_ctphp:nw_ct, nw_stphp:nw_st, nwz_pcdphp:nwz_pcd, ml_lsphp:ml_ls, idphp:id},
+                    url: 'php/db_conn.php',
+                    type: "post",
+                    success: function(response){
+                        alert(response);
+                        $("#reg_walthr_date").val("");
+                        $("#reg_mov_date").val("");
+                        $("#reg_cstm_name").val("");
+                        $("#reg_cntct").val("");
+                        $("#reg_phn").val("");
+                        $("#reg_fx").val("");
+                        $("#reg_ml").val("");
+                        $("#reg_old_adrss").val("");
+                        $("#reg_old_ct").val("");
+                        $("#reg_old_st").val("");
+                        $("#reg_old_zpcd").val("");
+                        $("#reg_nw_adrss").val("");
+                        $("#reg_nw_ct").val("");
+                        $("#reg_nw_st").val("");
+                        $("#reg_nwz_pcd").val("");
+                        $("#reg_ml_ls").val("");
+                        $("#reg_id").val("");
+                        $(".respuesta").html("Registro Éxitoso");
+                        /*location.reload();*/
+
+
+
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</body>
+</html>
